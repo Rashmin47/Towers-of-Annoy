@@ -1,13 +1,13 @@
 # flutter pub run flutter_launcher_icons
 flutter_launcher_icons:
-  image_path: "assets/logos/toa.png"
+  image_path: "assets/logos/toalogo.png"
 
   android: "charibazar_icon"
   remove_alpha_channel_android: true
-  image_path_android: "assets/logos/toa.png"
+  image_path_android: "assets/logos/toalogo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   adaptive_icon_background: "#007aff"
-  adaptive_icon_foreground: "assets/logos/toa.png"
+  adaptive_icon_foreground: "assets/logos/toalogo.png"
   # adaptive_icon_monochrome: "assets/icon/monochrome.png"
 
   ios: true
@@ -19,15 +19,15 @@ flutter_launcher_icons:
 
   web:
     generate: true
-    image_path: "assets/logos/toa.png"
+    image_path: "assets/logos/toalogo.png"
     background_color: "#FFFFFF"
     theme_color: "#000000"
 
   windows:
     generate: true
-    image_path: "assets/logos/toa.png"
+    image_path: "assets/logos/toalogo.png"
     icon_size: 48 # min:48, max:256, default: 48
 
   macos:
     generate: true
-    image_path: "assets/logos/toa.png"
+    image_path: "assets/logos/toalogo.png"

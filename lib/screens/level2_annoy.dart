@@ -60,7 +60,7 @@ class _Level2HanoiState extends State<Level2Hanoi> {
     final message = _roastMessages[_random.nextInt(_roastMessages.length)];
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.amber,
         content: Text(message),
         duration: Duration(seconds: 2),
       ),
@@ -97,6 +97,35 @@ class _Level2HanoiState extends State<Level2Hanoi> {
       ];
       isSolved = false;
     });
+  }
+
+  void _showCongratsDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Congratulations!"),
+        content: const Text("You solved Level 2!"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => Level2Hanoi()),
+              );
+            },
+            child: const Text("Replay Level"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              resetGame();
+            },
+            child: const Text("You Win the Game"),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -168,8 +197,8 @@ class _Level2HanoiState extends State<Level2Hanoi> {
                       ],
                     ),
                   ElevatedButton(
-                    onPressed: isSolved ? null : resetGame,
-                    child: Text(isSolved ? "Restart" : "Go",style: TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold),),
+                    onPressed: isSolved ? () => _showCongratsDialog : null,
+                    child: Text(isSolved ? "Check" : "Go",style: TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                 ],
               ),

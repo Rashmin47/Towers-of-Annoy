@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/disk_widget.dart';
+import 'level2_annoy.dart';
 
 class Level1Hanoi extends StatefulWidget {
   @override
@@ -37,7 +38,34 @@ class _Level1HanoiState extends State<Level1Hanoi> {
           pegs[2][2] == 1;
     });
   }
-
+  void _showCongratsDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Congratulations!"),
+        content: Text("You solved Level 1!"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => Level2Hanoi()),
+              );
+            },
+            child: Text("Next Level"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              resetGame();
+            },
+            child: Text("Replay Level 1"),
+          ),
+        ],
+      ),
+    );
+  }
   void resetGame() {
     setState(() {
       pegs = [
@@ -105,8 +133,8 @@ class _Level1HanoiState extends State<Level1Hanoi> {
                     side: BorderSide(color: Colors.white, width: 2),
                   ),
                 ),
-                onPressed: isSolved ? resetGame : null,
-                child: Text(isSolved ? "Restart" : "Go",style: TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold),),
+                onPressed: isSolved ? () => _showCongratsDialog() : null,
+                child: Text(isSolved ? "Check" : "Go",style: TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold),),
               ),
             ),
           ),
