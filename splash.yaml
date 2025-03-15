@@ -1,12 +1,12 @@
 flutter_native_splash:
-  color: "#f8bb2d"
-  color_dark: "#f8bb2d"
+  color: "#2874f0"
+  color_dark: "#2874f0"
   image: assets/logos/toalogo.png
   image_dark: assets/logos/toalogo.png
 
   android_12:
-    color: "#f8bb2d"
-    color_dark: "#f8bb2d"
+    color: "#2874f0"
+    color_dark: "#2874f0"
     image: assets/logos/toalogo.png
     image_dark: assets/logos/toalogo.png
 
