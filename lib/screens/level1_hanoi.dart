@@ -4,6 +4,8 @@ import '../widgets/disk_widget.dart';
 import 'level2_annoy.dart';
 
 class Level1Hanoi extends StatefulWidget {
+  const Level1Hanoi({super.key});
+
   @override
   _Level1HanoiState createState() => _Level1HanoiState();
 }
@@ -42,25 +44,25 @@ class _Level1HanoiState extends State<Level1Hanoi> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Congratulations!"),
-        content: Text("You solved Level 1!"),
+        title: const Text("Congratulations!"),
+        content: const Text("You solved Level 1!"),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (_) => Level2Hanoi()),
+                MaterialPageRoute(builder: (_) => const Level2Hanoi()),
               );
             },
-            child: Text("Next Level"),
+            child: const Text("Next Level"),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               resetGame();
             },
-            child: Text("Replay Level 1"),
+            child: const Text("Replay Level 1"),
           ),
         ],
       ),
@@ -127,14 +129,14 @@ class _Level1HanoiState extends State<Level1Hanoi> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.amber, // Primary color
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
-                    side: BorderSide(color: Colors.white, width: 2),
+                    side: const BorderSide(color: Colors.white, width: 2),
                   ),
                 ),
                 onPressed: isSolved ? () => _showCongratsDialog() : null,
-                child: Text(isSolved ? "Check" : "Go",style: TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold),),
+                child: Text(isSolved ? "Check" : "Go",style: const TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold),),
               ),
             ),
           ),

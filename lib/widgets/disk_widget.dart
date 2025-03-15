@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DiskWidget extends StatelessWidget {
   final int size;
 
-  DiskWidget({required this.size});
+  const DiskWidget({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {

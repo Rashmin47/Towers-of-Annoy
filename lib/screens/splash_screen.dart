@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:towersofannoy/screens/main_menu.dart';
 import 'dart:math';
-import 'hanoi_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 100),
       vsync: this,
     );
   }
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       backgroundColor: Colors.red,
       body: Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/entrance1.png"))),
+        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/entrance1.png"))),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -70,16 +71,16 @@ class _SplashScreenState extends State<SplashScreen>
                       style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.amber, // Primary color
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
-                  side: BorderSide(color: Colors.white, width: 2),
+                  side: const BorderSide(color: Colors.white, width: 2),
                       ),
                       ),
                       onPressed: () {
                         _shakeButton();
-                        Future.delayed(Duration(milliseconds: 500), () {
-                          Get.off(MainMenuScreen()); // Navigate using GetX
+                        Future.delayed(const Duration(milliseconds: 500), () {
+                          Get.off(const MainMenuScreen()); // Navigate using GetX
                         });
                       },
 

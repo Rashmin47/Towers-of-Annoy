@@ -3,6 +3,8 @@ import '../widgets/disk_widget.dart';
 import 'dart:math';
 
 class Level2Hanoi extends StatefulWidget {
+  const Level2Hanoi({super.key});
+
   @override
   _Level2HanoiState createState() => _Level2HanoiState();
 }
@@ -62,7 +64,7 @@ class _Level2HanoiState extends State<Level2Hanoi> {
       SnackBar(
         backgroundColor: Colors.amber,
         content: Text(message),
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -80,7 +82,7 @@ class _Level2HanoiState extends State<Level2Hanoi> {
     setState(() {
       isSolved = true;
     });
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         isSolved = false;
         _randomizePegs();
@@ -111,7 +113,7 @@ class _Level2HanoiState extends State<Level2Hanoi> {
               Navigator.of(context).pop();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (_) => Level2Hanoi()),
+                MaterialPageRoute(builder: (_) => const Level2Hanoi()),
               );
             },
             child: const Text("Replay Level"),
@@ -135,7 +137,7 @@ class _Level2HanoiState extends State<Level2Hanoi> {
       appBar: AppBar(title: const Text("Tower of Annoy - Level 2 (Chaos Edition!)"),backgroundColor: Colors.amber,),
       body: Column(
         children: [
-          Text(
+          const Text(
             "WARNING: Pegs may randomly shuffle!",
             style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
           ),
@@ -181,7 +183,7 @@ class _Level2HanoiState extends State<Level2Hanoi> {
                   if (isSolved)
                     Column(
                       children: [
-                        Text(
+                        const Text(
                           "CONGRATULATIONS!",
                           style: TextStyle(
                             fontSize: 24,
@@ -189,16 +191,16 @@ class _Level2HanoiState extends State<Level2Hanoi> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: _fakeVictory,
-                          child: Text("YOU WIN"),
+                          child: const Text("YOU WIN"),
                         ),
                       ],
                     ),
                   ElevatedButton(
                     onPressed: isSolved ? () => _showCongratsDialog : null,
-                    child: Text(isSolved ? "Check" : "Go",style: TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold),),
+                    child: Text(isSolved ? "Check" : "Go",style: const TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                 ],
               ),

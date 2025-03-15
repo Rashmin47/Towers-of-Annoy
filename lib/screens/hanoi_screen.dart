@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../widgets/disk_widget.dart';
 
 class HanoiScreen extends StatefulWidget {
+  const HanoiScreen({super.key});
+
   @override
   _HanoiScreenState createState() => _HanoiScreenState();
 }
@@ -25,7 +27,7 @@ class _HanoiScreenState extends State<HanoiScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tower of Annoy - Level 1")),
+      appBar: AppBar(title: const Text("Tower of Annoy - Level 1")),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(3, (pegIndex) {
@@ -37,8 +39,8 @@ class _HanoiScreenState extends State<HanoiScreen> {
                 children: pegs[pegIndex]
                     .map((disk) => Draggable<int>(
                   data: pegIndex,
-                  child: DiskWidget(size: disk),
                   feedback: DiskWidget(size: disk),
+                  child: DiskWidget(size: disk),
                 ))
                     .toList(),
               );
