@@ -104,31 +104,114 @@ class _Level2HanoiState extends State<Level2Hanoi> {
   void _showCongratsDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Congratulations!"),
-        content: const Text("You solved Level 2!"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => const Level2Hanoi()),
-              );
-            },
-            child: const Text("Replay Level"),
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(color: Colors.amber, width: 3),
+        ),
+        backgroundColor: Colors.red.withOpacity(0.9),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Title Section
+              Text(
+                "🏆 CONGRATULATIONS! You Win",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.amber,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      offset: Offset(2, 2),
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              // Content Section
+              Text(
+                "You solved Level 2!",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Action Buttons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  // Next Level Button
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.amber,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 25,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Level2Hanoi()),
+                      );
+                    },
+                    child: Text(
+                      "NEXT LEVEL",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+
+                  // Replay Button
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.amber, width: 2),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 25,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      resetGame();
+                    },
+                    child: Text(
+                      "REPLAY",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.amber,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              resetGame();
-            },
-            child: const Text("You Win the Game"),
-          ),
-        ],
+        ),
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +283,13 @@ class _Level2HanoiState extends State<Level2Hanoi> {
                     ),
                   ElevatedButton(
                     onPressed: isSolved ? () => _showCongratsDialog : null,
-                    child: Text(isSolved ? "Check" : "Go",style: const TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold),),
+                    child: Text(isSolved ? "Check" : "Go",style: const TextStyle(color: Colors.amber,fontSize: 20,fontWeight: FontWeight.bold,shadows: [
+                      Shadow(
+                        color: Colors.black,
+                        offset: Offset(2, 2),
+                        blurRadius: 5,
+                      ),
+                    ],),),
                   ),
                 ],
               ),
