@@ -186,16 +186,18 @@ class _Level1HanoiState extends State<Level1Hanoi> {
                         color: Colors.amber,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(50.0),
+                        padding: const EdgeInsets.only(bottom: 70.0,left: 5,right: 5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: pegs[pegIndex]
-                              .map((disk) => Draggable<int>(
-                            data: pegIndex,
-                            childWhenDragging: Opacity(opacity: 0.5, child: DiskWidget(size: disk)),
-                            feedback: DiskWidget(size: disk),
-                            child: DiskWidget(size: disk),
-                          ))
+                          children: pegs[pegIndex] 
+                              .map((disk) =>  Flexible(
+                                child: Draggable<int>(
+                                                            data: pegIndex,
+                                                            childWhenDragging: Opacity(opacity: 0.5, child: DiskWidget(size: disk)),
+                                                            feedback: DiskWidget(size: disk),
+                                                            child: DiskWidget(size: disk),
+                                                          ),
+                              ))
                               .toList(),
                         ),
                       ),

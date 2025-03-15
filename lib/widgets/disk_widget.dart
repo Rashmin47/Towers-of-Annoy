@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class DiskWidget extends StatelessWidget {
   final int size;
 
@@ -9,10 +8,9 @@ class DiskWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
-      width: size * 40.0,
-      height: 20.0,
+      width: size * MediaQuery.of(context).size.width / 12, // Adjust width dynamically
+      height: MediaQuery.of(context).size.height / 50, // Adjust height dynamically
       decoration: BoxDecoration(
-        // Red/amber gradient background
         gradient: LinearGradient(
           colors: [
             Colors.red.withOpacity(0.8),
@@ -21,13 +19,12 @@ class DiskWidget extends StatelessWidget {
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
-        // Amber border
-        border: Border.all(color: Colors.amber, width: 2),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.amber, width: 2),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.3),
-            offset: const Offset(2, 2),
+            offset: Offset(2, 2),
             blurRadius: 4,
           ),
         ],
